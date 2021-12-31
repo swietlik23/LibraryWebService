@@ -1,0 +1,16 @@
+CREATE TABLE BOOK (
+    bookId BIGINT AUTO_INCREMENT  PRIMARY KEY,
+    title VARCHAR(1000) NOT NULL,
+    authors VARCHAR(1000) NOT NULL,
+    language_code VARCHAR(20) NOT NULL,
+    num_pages VARCHAR(15000) NOT NULL,
+    publication_date VARCHAR(400) NOT NULL,
+    publisher VARCHAR(400) NOT NULL
+);
+
+CREATE TABLE READER (
+    readerId BIGINT AUTO_INCREMENT  PRIMARY KEY,
+    firstName VARCHAR(400) NOT NULL,
+    lastName VARCHAR(400) NOT NULL,
+    email VARCHAR(400) NOT NULL
+)
