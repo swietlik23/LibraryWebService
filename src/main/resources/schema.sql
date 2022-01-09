@@ -1,5 +1,5 @@
 CREATE TABLE BOOK (
-    book_id BIGINT AUTO_INCREMENT  PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT  PRIMARY KEY,
     title VARCHAR(1000) NOT NULL,
     authors VARCHAR(1000) NOT NULL,
     language_code VARCHAR(20) NOT NULL,
@@ -9,16 +9,19 @@ CREATE TABLE BOOK (
 );
 
 CREATE TABLE READER (
-    reader_id BIGINT AUTO_INCREMENT  PRIMARY KEY,
-    firstName VARCHAR(400) NOT NULL,
-    lastName VARCHAR(400) NOT NULL,
+    id BIGINT AUTO_INCREMENT  PRIMARY KEY,
+    first_name VARCHAR(400) NOT NULL,
+    last_name VARCHAR(400) NOT NULL,
     email VARCHAR(400) NOT NULL
 );
 
-CREATE TABLE RENTAL (
-    rental_id BIGINT AUTO_INCREMENT  PRIMARY KEY,
-    book_id INT CONSTRAINT FK_BOOK REFERENCES BOOK(book_id),
-    reader_id INT CONSTRAINT FK_READER REFERENCES READER(reader_id),
-    rental_date DATE,
-    return_date DATE
+CREATE TABLE BORROWING (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    borrow_date timestamp,
+    return_date timestamp,
+    book_id BIGINT,
+    reader_id BIGINT
 );
+
+ALTER TABLE BORROWING ADD CONSTRAINT borrowing_book_id FOREIGN KEY (book_id) REFERENCES book(id);
+ALTER TABLE BORROWING ADD CONSTRAINT borrowing_reader_id FOREIGN KEY (reader_id) REFERENCES reader(id)

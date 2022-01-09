@@ -3,10 +3,7 @@ package com.swietlicki.library.controller;
 import com.swietlicki.library.model.Book;
 import com.swietlicki.library.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,16 @@ public class BookController {
                                     @RequestParam(required = false) Integer page) {
         int pageNumber = page != null && page >= 0 ? page : 0;
         return bookService.getAllByTitle(title, pageNumber);
+    }
+
+    @PostMapping("/books")
+    public Book addBook(@RequestBody Book book) {
+        return bookService.addBook(book);
+    }
+
+    @PutMapping("/books")
+    public Book editBook(@RequestBody Book book) {
+        return bookService.editBook(book);
     }
 
 }

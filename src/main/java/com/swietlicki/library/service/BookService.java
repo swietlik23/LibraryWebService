@@ -27,4 +27,12 @@ public class BookService {
     public List<Book> getAllByTitle(String title, int page) {
         return bookRepository.findAllByTitle(title.toLowerCase(), PageRequest.of(page,PAGE_SIZE));
     }
+
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Book editBook(Book book) {
+        return bookRepository.save(book);
+    }
 }

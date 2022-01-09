@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.cache.annotation.EnableCaching;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -13,7 +12,8 @@ import javax.persistence.Id;
 public class Book {
 
     @Id
-    private long bookId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String title;
     private String authors;
     private String language_code;
