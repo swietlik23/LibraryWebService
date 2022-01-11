@@ -14,4 +14,9 @@ public interface BorrowingRepisitory extends JpaRepository<Borrowing, Long> {
     @Query("SELECT b FROM Borrowing b")
     List<Borrowing> findAllBorrowings(Pageable page);
 
+    @Query("SELECT b FROM Borrowing b" +
+            " LEFT JOIN FETCH b.book" +
+            " LEFT JOIN FETCH b.reader")
+    List<Borrowing> findAllBorrowings1(Pageable page);
+
 }

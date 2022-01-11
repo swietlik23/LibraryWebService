@@ -24,7 +24,7 @@ public class BorrowingService {
     private final ReaderService readerService;
 
     public List<Borrowing> getAllBorrowings(int page) {
-        return borrowingRepisitory.findAllBorrowings(PageRequest.of(page, PAGE_SIZE));
+        return borrowingRepisitory.findAllBorrowings1(PageRequest.of(page, PAGE_SIZE));
     }
 
     public Borrowing lendToReader(long book_id, long reader_id) {

@@ -21,6 +21,6 @@ public class Borrowing {
     @OneToOne
     private Book book;
 
-    @ManyToOne
+    @OneToOne
     private Reader reader;
 }
