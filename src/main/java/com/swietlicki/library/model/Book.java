@@ -2,7 +2,6 @@ package com.swietlicki.library.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.cache.annotation.EnableCaching;
 
 import javax.persistence.*;
 
@@ -20,6 +19,9 @@ public class Book {
     private int num_pages;
     private String publication_date;
     private String publisher;
+    //NEW
+//    @OneToOne
+//    private Borrowing borrowing;
 
 
 }

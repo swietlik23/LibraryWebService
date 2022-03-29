@@ -19,4 +19,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAllByTitle(@Param("title") String title,
                               Pageable page);
 
+//    //NEW QUERY
+//    @Query("SELECT b FROM Book b JOIN Borrowing ON Book.id = Borrowing.book_id")
+//    List<Book> findAllBooksWithStatus(Pageable page);
+
 }

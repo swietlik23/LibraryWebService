@@ -19,6 +19,13 @@ public class BookController {
         return bookService.getBooks(pageNumber);
     }
 
+    //NEW METHOD
+//    @GetMapping("/bookstatus")
+//    public List<Book> getAllBooksWithStatus(@RequestParam(required = false) Integer page) {
+//        int pageNumber = page != null && page >= 0 ? page : 0;
+//        return bookService.getBooksWithStatus(pageNumber);
+//    }
+
     @GetMapping("/books/{id}")
     public Book getSingleBook(@PathVariable long id) {
         return bookService.getSingleBook(id);

@@ -3,7 +3,6 @@ package com.swietlicki.library.service;
 import com.swietlicki.library.model.Reader;
 import com.swietlicki.library.repository.ReaderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,8 +12,7 @@ public class ReaderService {
     private final ReaderRepository readerRepository;
 
     public Reader getSingleReader(long id) {
-        return readerRepository.findById(id)
-                .orElseThrow();
+        return readerRepository.findById(id).orElseThrow();
     }
 
     public Reader addReader(Reader reader) {

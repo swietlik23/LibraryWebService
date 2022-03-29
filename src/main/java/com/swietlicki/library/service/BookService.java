@@ -19,6 +19,11 @@ public class BookService {
         return bookRepository.findAllBooks(PageRequest.of(page,PAGE_SIZE));
     }
 
+    //NEW METHOD
+//    public List<Book> getBooksWithStatus(int page) {
+//        return bookRepository.findAllBooksWithStatus(PageRequest.of(page, PAGE_SIZE));
+//    }
+
     public Book getSingleBook(long id) {
         return bookRepository.findById(id)
                 .orElseThrow();

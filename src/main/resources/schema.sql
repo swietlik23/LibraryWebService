@@ -19,9 +19,9 @@ CREATE TABLE BORROWING (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     borrow_date timestamp,
     return_date timestamp,
-    book_id BIGINT,
-    reader_id BIGINT
+    book_id BIGINT NOT NULL,
+    reader_id BIGINT NOT NULL
 );
-
-ALTER TABLE BORROWING ADD CONSTRAINT borrowing_book_id FOREIGN KEY (book_id) REFERENCES book(id);
-ALTER TABLE BORROWING ADD CONSTRAINT borrowing_reader_id FOREIGN KEY (reader_id) REFERENCES reader(id)
+--
+--ALTER TABLE BORROWING ADD CONSTRAINT borrowing_reader_id FOREIGN KEY (reader_id) REFERENCES reader(id);
+--ALTER TABLE BORROWING ADD CONSTRAINT borrowing_book_id FOREIGN KEY (book_id) REFERENCES book(id)
