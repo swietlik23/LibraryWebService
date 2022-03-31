@@ -23,5 +23,5 @@ CREATE TABLE BORROWING (
     reader_id BIGINT NOT NULL
 );
 --
---ALTER TABLE BORROWING ADD CONSTRAINT borrowing_reader_id FOREIGN KEY (reader_id) REFERENCES reader(id);
+ALTER TABLE BORROWING ADD CONSTRAINT borrowing_reader_id FOREIGN KEY (reader_id) REFERENCES reader(id);
 --ALTER TABLE BORROWING ADD CONSTRAINT borrowing_book_id FOREIGN KEY (book_id) REFERENCES book(id)

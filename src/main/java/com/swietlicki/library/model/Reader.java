@@ -1,8 +1,9 @@
 package com.swietlicki.library.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.dynalink.linker.LinkerServices;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +22,7 @@ public class Reader {
     private String lastName;
     private String email;
 
-    @OneToMany
-    @JoinColumn(name = "readerId")
+    @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY)
     private List<Borrowing> borrowings;
 
 }

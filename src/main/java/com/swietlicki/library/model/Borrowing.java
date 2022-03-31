@@ -1,17 +1,12 @@
 package com.swietlicki.library.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Fetch;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
 public class Borrowing {
 
     @Id
@@ -20,11 +15,38 @@ public class Borrowing {
     private LocalDateTime borrowDate;
     private LocalDateTime returnDate;
 
-    private long readerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Reader reader;
 
-//    --    borrow_date timestamp,
-//--    return_date timestamp,
-//--    book_id BIGINT NOT NULL,
-//--    reader_id BIGINT NOT NULL
+    public Reader getReader() {
+        return reader;
+    }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(LocalDateTime borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public LocalDateTime getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDateTime returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public void setReader(Reader reader) {
+        this.reader = reader;
+    }
 }
