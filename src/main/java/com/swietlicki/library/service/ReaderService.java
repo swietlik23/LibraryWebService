@@ -18,4 +18,12 @@ public class ReaderService {
     public Reader addReader(Reader reader) {
         return readerRepository.save(reader);
     }
+
+    public Reader updateReader(Reader reader) {
+        return readerRepository.save(reader);
+    }
+
+    public void deleteReader(long id) {
+        readerRepository.deleteById(id);
+    }
 }

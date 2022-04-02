@@ -1,5 +1,6 @@
 package com.swietlicki.library.service;
 
+import com.swietlicki.library.controller.dto.BorrowingWithIdsDto;
 import com.swietlicki.library.model.Borrowing;
 import com.swietlicki.library.repository.BorrowingRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,5 +18,13 @@ public class BorrowingService {
 
     public List<Borrowing> getBorrowings(int page) {
         return borrowingRepository.findAllBorrowings(PageRequest.of(page,PAGE_SIZE));
+    }
+
+    public Borrowing addBorrowing(Borrowing borrowing) {
+        return borrowingRepository.save(borrowing);
+    }
+
+    public void deleteBorrowing(long id) {
+        borrowingRepository.deleteById(id);
     }
 }

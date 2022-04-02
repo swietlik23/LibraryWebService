@@ -19,9 +19,7 @@ public class Book {
     private int num_pages;
     private String publication_date;
     private String publisher;
-    //NEW
-//    @OneToOne
-//    private Borrowing borrowing;
 
-
+    @OneToOne(mappedBy = "book", fetch = FetchType.LAZY)
+    private Borrowing borrowing;
 }

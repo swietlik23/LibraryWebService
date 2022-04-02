@@ -2,7 +2,7 @@ package com.swietlicki.library.controller.dto;
 
 import java.time.LocalDateTime;
 
-public class BorrowingDto {
+public class BorrowingDatesDto {
 
     private long id;
     private LocalDateTime borrowDate;
@@ -47,12 +47,12 @@ public class BorrowingDto {
             return this;
         }
 
-        public BorrowingDto build() {
-            BorrowingDto borrowingDto = new BorrowingDto();
-            borrowingDto.id = this.id;
-            borrowingDto.borrowDate = this.borrowDate;
-            borrowingDto.returnDate = this.returnDate;
-            return borrowingDto;
+        public BorrowingDatesDto build() {
+            BorrowingDatesDto borrowingDatesDto = new BorrowingDatesDto();
+            borrowingDatesDto.id = this.id;
+            borrowingDatesDto.borrowDate = this.borrowDate;
+            borrowingDatesDto.returnDate = this.returnDate;
+            return borrowingDatesDto;
         }
     }
 }

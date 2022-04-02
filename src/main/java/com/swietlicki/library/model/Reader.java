@@ -22,7 +22,6 @@ public class Reader {
     private String lastName;
     private String email;
 
-    @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Borrowing> borrowings;
-
 }

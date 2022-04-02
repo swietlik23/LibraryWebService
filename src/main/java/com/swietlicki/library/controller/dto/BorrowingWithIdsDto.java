@@ -2,11 +2,12 @@ package com.swietlicki.library.controller.dto;
 
 import java.time.LocalDateTime;
 
-public class BorrowingWithReaderIdDto {
+public class BorrowingWithIdsDto {
 
     private long id;
     private LocalDateTime borrowDate;
     private LocalDateTime returnDate;
+    private long bookId;
     private long readerId;
 
     public long getId() {
@@ -21,6 +22,10 @@ public class BorrowingWithReaderIdDto {
         return borrowDate;
     }
 
+    public long getBookId() {
+        return bookId;
+    }
+
     public long getReaderId() {
         return readerId;
     }
@@ -29,6 +34,7 @@ public class BorrowingWithReaderIdDto {
         private long id;
         private LocalDateTime borrowDate;
         private LocalDateTime returnDate;
+        private long bookId;
         private long readerId;
 
         private BorrowingWithReaderDtoBuilder() {
@@ -53,18 +59,24 @@ public class BorrowingWithReaderIdDto {
             return this;
         }
 
+        public BorrowingWithReaderDtoBuilder withBookId(long bookId) {
+            this.bookId = bookId;
+            return this;
+        }
+
         public BorrowingWithReaderDtoBuilder withReaderId(long readerId) {
             this.readerId = readerId;
             return this;
         }
 
-        public BorrowingWithReaderIdDto build() {
-            BorrowingWithReaderIdDto borrowingWithReaderIdDto = new BorrowingWithReaderIdDto();
-            borrowingWithReaderIdDto.returnDate = this.returnDate;
-            borrowingWithReaderIdDto.readerId = this.readerId;
-            borrowingWithReaderIdDto.id = this.id;
-            borrowingWithReaderIdDto.borrowDate = this.borrowDate;
-            return borrowingWithReaderIdDto;
+        public BorrowingWithIdsDto build() {
+            BorrowingWithIdsDto borrowingWithIdsDto = new BorrowingWithIdsDto();
+            borrowingWithIdsDto.id = this.id;
+            borrowingWithIdsDto.borrowDate = this.borrowDate;
+            borrowingWithIdsDto.returnDate = this.returnDate;
+            borrowingWithIdsDto.bookId = this.bookId;
+            borrowingWithIdsDto.readerId = this.readerId;
+            return borrowingWithIdsDto;
         }
     }
 }
