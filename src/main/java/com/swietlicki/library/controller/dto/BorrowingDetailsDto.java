@@ -2,11 +2,11 @@ package com.swietlicki.library.controller.dto;
 
 import java.time.LocalDateTime;
 
-public class BorrowingDatesDto {
+public class BorrowingDetailsDto {
 
     private long id;
     private LocalDateTime borrowDate;
-    private LocalDateTime returnDate;
+    private LocalDateTime returnUntilDate;
 
     public long getId() {
         return id;
@@ -16,14 +16,14 @@ public class BorrowingDatesDto {
         return borrowDate;
     }
 
-    public LocalDateTime getReturnDate() {
-        return returnDate;
+    public LocalDateTime getReturnUntilDate() {
+        return returnUntilDate;
     }
 
     public static final class BorrowingDtoBuilder {
         private long id;
         private LocalDateTime borrowDate;
-        private LocalDateTime returnDate;
+        private LocalDateTime returnUntilDate;
 
         private BorrowingDtoBuilder() {
         }
@@ -42,17 +42,17 @@ public class BorrowingDatesDto {
             return this;
         }
 
-        public BorrowingDtoBuilder withReturnDate(LocalDateTime returnDate) {
-            this.returnDate = returnDate;
+        public BorrowingDtoBuilder withReturnUntilDate(LocalDateTime returnUntilDate) {
+            this.returnUntilDate = returnUntilDate;
             return this;
         }
 
-        public BorrowingDatesDto build() {
-            BorrowingDatesDto borrowingDatesDto = new BorrowingDatesDto();
-            borrowingDatesDto.id = this.id;
-            borrowingDatesDto.borrowDate = this.borrowDate;
-            borrowingDatesDto.returnDate = this.returnDate;
-            return borrowingDatesDto;
+        public BorrowingDetailsDto build() {
+            BorrowingDetailsDto borrowingDetailsDto = new BorrowingDetailsDto();
+            borrowingDetailsDto.id = this.id;
+            borrowingDetailsDto.borrowDate = this.borrowDate;
+            borrowingDetailsDto.returnUntilDate = this.returnUntilDate;
+            return borrowingDetailsDto;
         }
     }
 }

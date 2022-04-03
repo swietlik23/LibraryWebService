@@ -11128,6 +11128,6 @@ insert into book(id, title, authors, language_code, num_pages, publication_date,
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (45634,'The Ice-Shirt (Seven Dreams #1)', 'William T. Vollmann', 'eng', '415', '8/1/1993', 'Penguin Books');
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (45639,'Poor People', 'William T. Vollmann', 'eng', '434', '2/27/2007', 'Ecco');
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (45641,'Las aventuras de Tom Sawyer', 'Mark Twain', 'spa', '272', '5/28/2006', 'Edimat Libros');
-insert into borrowing(book_id, reader_id) values (1, 1);
-insert into borrowing(book_id, reader_id) values (2, 1);
-insert into borrowing(book_id, reader_id) values (4, 2);
+insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (1, 1, '2022-01-03T17:01:53.106934', '2022-02-03T17:01:53.106934');
+insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (2, 1, '2022-01-14T17:01:53.106934', '2022-02-14T17:01:53.106934');
+insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (4, 2, '2022-01-23T17:01:53.106934', '2022-02-23T17:01:53.106934');

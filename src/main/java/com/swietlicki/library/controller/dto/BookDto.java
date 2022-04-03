@@ -9,7 +9,7 @@ public class BookDto {
     private int num_pages;
     private String publication_date;
     private String publisher;
-    private BorrowingDatesDto borrowing;
+    private BorrowingDetailsDto borrowing;
 
     public long getId() {
         return id;
@@ -39,7 +39,7 @@ public class BookDto {
         return publisher;
     }
 
-    public BorrowingDatesDto getBorrowing() {
+    public BorrowingDetailsDto getBorrowing() {
         return borrowing;
     }
 
@@ -51,7 +51,7 @@ public class BookDto {
         private int num_pages;
         private String publication_date;
         private String publisher;
-        private BorrowingDatesDto borrowing;
+        private BorrowingDetailsDto borrowing;
 
         private BookDtoBuilder() {
         }
@@ -95,8 +95,8 @@ public class BookDto {
             return this;
         }
 
-        public BookDtoBuilder withBorrowingDto(BorrowingDatesDto borrowingDatesDto) {
-            this.borrowing = borrowingDatesDto;
+        public BookDtoBuilder withBorrowingDto(BorrowingDetailsDto borrowingDetailsDto) {
+            this.borrowing = borrowingDetailsDto;
             return this;
         }
 

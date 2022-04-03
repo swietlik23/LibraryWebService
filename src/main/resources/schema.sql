@@ -12,13 +12,14 @@ CREATE TABLE READER (
     id BIGINT AUTO_INCREMENT  PRIMARY KEY,
     first_name VARCHAR(400) NOT NULL,
     last_name VARCHAR(400) NOT NULL,
-    email VARCHAR(400) NOT NULL
+    email VARCHAR(400) NOT NULL,
+    balance DECIMAL(10,2) DEFAULT 0
 );
 
 CREATE TABLE BORROWING (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     borrow_date timestamp,
-    return_date timestamp,
+    return_until_date timestamp,
     book_id BIGINT NOT NULL,
     reader_id BIGINT NOT NULL
 );

@@ -1,20 +1,28 @@
 package com.swietlicki.library.controller;
 
+import com.swietlicki.library.controller.dto.BorrowingDetailsDto;
 import com.swietlicki.library.controller.dto.BorrowingPostDto;
 import com.swietlicki.library.controller.dto.BorrowingWithIdsDto;
+import com.swietlicki.library.controller.dto.FinancialTransactionDto;
 import com.swietlicki.library.model.Book;
 import com.swietlicki.library.model.Borrowing;
+import com.swietlicki.library.model.FinancialTransaction;
 import com.swietlicki.library.model.Reader;
 import com.swietlicki.library.service.BookService;
 import com.swietlicki.library.service.BorrowingService;
+import com.swietlicki.library.service.FinancialTransactionService;
 import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
-import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.mapBorrowingToBorrowingWithIdsDto;
-import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.mapBorrowingsToBorrowingsDto;
+import static com.swietlicki.library.controller.mapper.BookDtoMapper.mapBookToBookDto;
+import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.*;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +31,7 @@ public class BorrowingController {
     private final BorrowingService borrowingService;
     private final BookService bookService;
     private final ReaderService readerService;
+    private final FinancialTransactionService financialTransactionService;
 
     @GetMapping("/borrowings")
     public List<BorrowingWithIdsDto> getAllBorrowings(@RequestParam(required = false) Integer page) {
@@ -34,14 +43,29 @@ public class BorrowingController {
     public BorrowingWithIdsDto addBorrowing(@RequestBody BorrowingPostDto borrowingPostDto) {
         Book book = bookService.getSingleBook(borrowingPostDto.getBookId());
         Reader reader = readerService.getSingleReader(borrowingPostDto.getReaderId());
-        Borrowing borrowing = new Borrowing();
-        borrowing.setBook(book);
-        borrowing.setReader(reader);
-        return mapBorrowingToBorrowingWithIdsDto(borrowingService.addBorrowing(borrowing));
+        if(mapBookToBookDto(book).getBorrowing() == null) {
+            Borrowing borrowing = new Borrowing();
+            borrowing.setBook(book);
+            borrowing.setReader(reader);
+            return mapBorrowingToBorrowingWithIdsDto(borrowingService.addBorrowing(borrowing));
+        }
+        return new BorrowingWithIdsDto();
     }
 
     @DeleteMapping("/borrowings/{id}")
     public void deleteBorrowing(@PathVariable long id) {
+        BorrowingWithIdsDto borrowing = mapBorrowingToBorrowingWithIdsDto(borrowingService.getBorrowing(id));
+        LocalDateTime currentDate = LocalDateTime.now();
+        long numberLateDays = DAYS.between(borrowing.getReturnUntilDate(), currentDate);
+        if(numberLateDays > 0) {
+            FinancialTransaction financialTransaction = new FinancialTransaction();
+            financialTransaction.setCreated(currentDate);
+            financialTransaction.setTransferType(FinancialTransaction.FinancialType.FEE);
+            financialTransaction.setReaderId(borrowing.getReaderId());
+            financialTransaction.setDescription(borrowing.toString());
+            financialTransaction.setAmount(numberLateDays * FinancialTransaction.FEE_PER_DAY);
+            financialTransactionService.addTransaction(financialTransaction);
+        }
         borrowingService.deleteBorrowing(id);
     }
 

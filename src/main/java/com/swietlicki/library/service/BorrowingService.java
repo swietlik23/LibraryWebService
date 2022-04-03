@@ -27,4 +27,8 @@ public class BorrowingService {
     public void deleteBorrowing(long id) {
         borrowingRepository.deleteById(id);
     }
+
+    public Borrowing getBorrowing(long id) {
+        return borrowingRepository.getById(id);
+    }
 }

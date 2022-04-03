@@ -1,9 +1,5 @@
 package com.swietlicki.library.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +20,22 @@ public class Reader {
 
     @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Borrowing> borrowings;
+
+    private double balance;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "readerId")
+    private List<FinancialTransaction> financialTransactions;
+
+    public void setCurrentBalance() {
+        double amount = financialTransactions.stream().sequential()
+                .mapToDouble(FinancialTransaction::getAmount)
+                .sum();
+        this.balance=amount;
+    }
+
+    public double getBalance() {
+        setCurrentBalance();
+        return this.balance;
+    }
 }

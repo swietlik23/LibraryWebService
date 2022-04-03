@@ -7,7 +7,8 @@ public class ReaderDto {
     private String firstName;
     private String lastName;
     private String email;
-    private List<BorrowingDatesDto> borrowings;
+    private double balance;
+    private List<BorrowingDetailsDto> borrowings;
 
     public long getId() {
         return id;
@@ -25,7 +26,11 @@ public class ReaderDto {
         return email;
     }
 
-    public List<BorrowingDatesDto> getBorrowings() {
+    public double getBalance() {
+        return balance;
+    }
+
+    public List<BorrowingDetailsDto> getBorrowings() {
         return borrowings;
     }
 
@@ -34,7 +39,8 @@ public class ReaderDto {
         private String firstName;
         private String lastName;
         private String email;
-        private List<BorrowingDatesDto> borrowings;
+        private double balance;
+        private List<BorrowingDetailsDto> borrowings;
 
         private ReaderDtoBuilder() {
         }
@@ -63,7 +69,12 @@ public class ReaderDto {
             return this;
         }
 
-        public ReaderDtoBuilder withBorrowings(List<BorrowingDatesDto> borrowings) {
+        public ReaderDtoBuilder withBalance(double balance) {
+            this.balance = balance;
+            return this;
+        }
+
+        public ReaderDtoBuilder withBorrowings(List<BorrowingDetailsDto> borrowings) {
             this.borrowings = borrowings;
             return this;
         }
@@ -74,6 +85,7 @@ public class ReaderDto {
             readerDto.firstName = this.firstName;
             readerDto.lastName = this.lastName;
             readerDto.email = this.email;
+            readerDto.balance = this.balance;
             readerDto.borrowings = this.borrowings;
             return readerDto;
         }

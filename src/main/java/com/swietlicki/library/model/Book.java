@@ -2,6 +2,7 @@ package com.swietlicki.library.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 

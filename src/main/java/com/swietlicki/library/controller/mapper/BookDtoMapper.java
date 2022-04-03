@@ -3,7 +3,6 @@ package com.swietlicki.library.controller.mapper;
 import com.swietlicki.library.controller.dto.BookDetailsDto;
 import com.swietlicki.library.controller.dto.BookDto;
 import com.swietlicki.library.controller.dto.BookPostDto;
-import com.swietlicki.library.controller.dto.BorrowingDatesDto;
 import com.swietlicki.library.model.Book;
 
 import java.util.List;

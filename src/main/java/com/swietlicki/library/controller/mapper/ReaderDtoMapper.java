@@ -1,6 +1,6 @@
 package com.swietlicki.library.controller.mapper;
 
-import com.swietlicki.library.controller.dto.BorrowingDatesDto;
+import com.swietlicki.library.controller.dto.BorrowingDetailsDto;
 import com.swietlicki.library.controller.dto.ReaderDto;
 import com.swietlicki.library.controller.dto.ReaderPostDto;
 import com.swietlicki.library.model.Borrowing;
@@ -17,6 +17,7 @@ public class ReaderDtoMapper {
                 .withFirstName(reader.getFirstName())
                 .withLastName(reader.getLastName())
                 .withEmail(reader.getEmail())
+                .withBalance(reader.getBalance())
                 .withBorrowings(mapBorrowingsToDtos(reader))
                 .build();
     }
@@ -40,17 +41,17 @@ public class ReaderDtoMapper {
         return reader;
     }
 
-    private static List<BorrowingDatesDto> mapBorrowingsToDtos(Reader reader) {
+    private static List<BorrowingDetailsDto> mapBorrowingsToDtos(Reader reader) {
         return reader.getBorrowings().stream()
                 .map(borrowing -> mapBorrowingToDto(borrowing)
                 ).collect(Collectors.toList());
     }
 
-    private static BorrowingDatesDto mapBorrowingToDto(Borrowing borrowing) {
-        return BorrowingDatesDto.BorrowingDtoBuilder.aBorrowingDto()
+    private static BorrowingDetailsDto mapBorrowingToDto(Borrowing borrowing) {
+        return BorrowingDetailsDto.BorrowingDtoBuilder.aBorrowingDto()
                 .withId(borrowing.getId())
                 .withBorrowDate(borrowing.getBorrowDate())
-                .withReturnDate(borrowing.getReturnDate())
+                .withReturnUntilDate(borrowing.getReturnUntilDate())
                 .build();
     }
 

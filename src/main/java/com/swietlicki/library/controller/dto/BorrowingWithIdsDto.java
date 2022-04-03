@@ -6,7 +6,7 @@ public class BorrowingWithIdsDto {
 
     private long id;
     private LocalDateTime borrowDate;
-    private LocalDateTime returnDate;
+    private LocalDateTime returnUntilDate;
     private long bookId;
     private long readerId;
 
@@ -14,8 +14,8 @@ public class BorrowingWithIdsDto {
         return id;
     }
 
-    public LocalDateTime getReturnDate() {
-        return returnDate;
+    public LocalDateTime getReturnUntilDate() {
+        return returnUntilDate;
     }
 
     public LocalDateTime getBorrowDate() {
@@ -33,7 +33,7 @@ public class BorrowingWithIdsDto {
     public static final class BorrowingWithReaderDtoBuilder {
         private long id;
         private LocalDateTime borrowDate;
-        private LocalDateTime returnDate;
+        private LocalDateTime returnUntilDate;
         private long bookId;
         private long readerId;
 
@@ -54,8 +54,8 @@ public class BorrowingWithIdsDto {
             return this;
         }
 
-        public BorrowingWithReaderDtoBuilder withReturnDate(LocalDateTime returnDate) {
-            this.returnDate = returnDate;
+        public BorrowingWithReaderDtoBuilder withReturnUntilDate(LocalDateTime returnUntilDate) {
+            this.returnUntilDate = returnUntilDate;
             return this;
         }
 
@@ -73,7 +73,7 @@ public class BorrowingWithIdsDto {
             BorrowingWithIdsDto borrowingWithIdsDto = new BorrowingWithIdsDto();
             borrowingWithIdsDto.id = this.id;
             borrowingWithIdsDto.borrowDate = this.borrowDate;
-            borrowingWithIdsDto.returnDate = this.returnDate;
+            borrowingWithIdsDto.returnUntilDate = this.returnUntilDate;
             borrowingWithIdsDto.bookId = this.bookId;
             borrowingWithIdsDto.readerId = this.readerId;
             return borrowingWithIdsDto;
