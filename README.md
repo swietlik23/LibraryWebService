@@ -4,6 +4,17 @@ This application is created to learn the Spring Boot framework.
 __LibraryWebService__ currently allows you to manage the library service (book management, user management, loans, returns, penalty fees). 
 In the future it is planned to add a module that will suggest readers specific items to borrow based on their borrowing history.
 
+### Table of contents
+
+---
+
+* [Build with](#build-with)
+
+* [Data source](#data-source)
+
+* [Presentation](#presentation)
+
+* [Status](#status)
 
 ### Build with
 ---
