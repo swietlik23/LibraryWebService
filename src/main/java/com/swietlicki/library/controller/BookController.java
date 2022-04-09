@@ -1,9 +1,8 @@
 package com.swietlicki.library.controller;
 
-import com.swietlicki.library.controller.dto.BookDetailsDto;
-import com.swietlicki.library.controller.dto.BookDto;
-import com.swietlicki.library.controller.dto.BookPostDto;
-import com.swietlicki.library.model.Book;
+import com.swietlicki.library.controller.dto.bookDto.BookDetailsDto;
+import com.swietlicki.library.controller.dto.bookDto.BookDto;
+import com.swietlicki.library.controller.dto.bookDto.BookPostDto;
 import com.swietlicki.library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

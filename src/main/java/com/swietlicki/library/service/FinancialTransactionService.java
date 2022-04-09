@@ -5,6 +5,8 @@ import com.swietlicki.library.repository.FinancialTransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FinancialTransactionService {
@@ -13,5 +15,9 @@ public class FinancialTransactionService {
 
     public FinancialTransaction addTransaction(FinancialTransaction financialTransaction) {
         return financialTransactionRepository.save(financialTransaction);
+    }
+
+    public List<FinancialTransaction> getAllByReaderId(long readerId) {
+        return financialTransactionRepository.findAllByReaderId(readerId);
     }
 }

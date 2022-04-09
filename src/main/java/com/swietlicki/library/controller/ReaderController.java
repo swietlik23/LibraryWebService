@@ -1,7 +1,7 @@
 package com.swietlicki.library.controller;
 
-import com.swietlicki.library.controller.dto.ReaderDto;
-import com.swietlicki.library.controller.dto.ReaderPostDto;
+import com.swietlicki.library.controller.dto.readerDto.ReaderDto;
+import com.swietlicki.library.controller.dto.readerDto.ReaderPostDto;
 import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

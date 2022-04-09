@@ -1,9 +1,7 @@
 package com.swietlicki.library.controller;
 
-import com.swietlicki.library.controller.dto.BorrowingDetailsDto;
-import com.swietlicki.library.controller.dto.BorrowingPostDto;
-import com.swietlicki.library.controller.dto.BorrowingWithIdsDto;
-import com.swietlicki.library.controller.dto.FinancialTransactionDto;
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingPostDto;
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingWithIdsDto;
 import com.swietlicki.library.model.Book;
 import com.swietlicki.library.model.Borrowing;
 import com.swietlicki.library.model.FinancialTransaction;
@@ -15,9 +13,7 @@ import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import static com.swietlicki.library.controller.mapper.BookDtoMapper.mapBookToBookDto;
@@ -60,7 +56,6 @@ public class BorrowingController {
         if(numberLateDays > 0) {
             FinancialTransaction financialTransaction = new FinancialTransaction();
             financialTransaction.setCreated(currentDate);
-            financialTransaction.setTransferType(FinancialTransaction.FinancialType.FEE);
             financialTransaction.setReaderId(borrowing.getReaderId());
             financialTransaction.setDescription(borrowing.toString());
             financialTransaction.setAmount(numberLateDays * FinancialTransaction.FEE_PER_DAY);

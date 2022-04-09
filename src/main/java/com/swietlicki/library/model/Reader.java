@@ -21,6 +21,7 @@ public class Reader {
     @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Borrowing> borrowings;
 
+    @JoinColumn
     private double balance;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)

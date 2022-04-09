@@ -1,4 +1,6 @@
-package com.swietlicki.library.controller.dto;
+package com.swietlicki.library.controller.dto.readerDto;
+
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingDetailsDto;
 
 import java.util.List;
 

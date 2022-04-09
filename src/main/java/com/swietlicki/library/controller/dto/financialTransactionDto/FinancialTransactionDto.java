@@ -1,18 +1,13 @@
-package com.swietlicki.library.controller.dto;
+package com.swietlicki.library.controller.dto.financialTransactionDto;
 
 import java.time.LocalDateTime;
 
 public class FinancialTransactionDto {
 
-    private String transferType;
     private LocalDateTime created;
     private long readerId;
     private String description;
     private double amount;
-
-    public String getTransferType() {
-        return transferType;
-    }
 
     public LocalDateTime getCreated() {
         return created;
@@ -31,7 +26,6 @@ public class FinancialTransactionDto {
     }
 
     public static final class FinancialTransactionDtoBuilder {
-        private String transferType;
         private LocalDateTime created;
         private long readerId;
         private String description;
@@ -42,11 +36,6 @@ public class FinancialTransactionDto {
 
         public static FinancialTransactionDtoBuilder aFinancialTransactionDto() {
             return new FinancialTransactionDtoBuilder();
-        }
-
-        public FinancialTransactionDtoBuilder withTransferType(String transferType) {
-            this.transferType = transferType;
-            return this;
         }
 
         public FinancialTransactionDtoBuilder withCreated(LocalDateTime created) {
@@ -71,7 +60,6 @@ public class FinancialTransactionDto {
 
         public FinancialTransactionDto build() {
             FinancialTransactionDto financialTransactionDto = new FinancialTransactionDto();
-            financialTransactionDto.transferType = this.transferType;
             financialTransactionDto.created = this.created;
             financialTransactionDto.amount = this.amount;
             financialTransactionDto.readerId = this.readerId;

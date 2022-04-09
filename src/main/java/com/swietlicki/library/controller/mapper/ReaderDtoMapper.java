@@ -1,8 +1,8 @@
 package com.swietlicki.library.controller.mapper;
 
-import com.swietlicki.library.controller.dto.BorrowingDetailsDto;
-import com.swietlicki.library.controller.dto.ReaderDto;
-import com.swietlicki.library.controller.dto.ReaderPostDto;
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingDetailsDto;
+import com.swietlicki.library.controller.dto.readerDto.ReaderDto;
+import com.swietlicki.library.controller.dto.readerDto.ReaderPostDto;
 import com.swietlicki.library.model.Borrowing;
 import com.swietlicki.library.model.Reader;
 

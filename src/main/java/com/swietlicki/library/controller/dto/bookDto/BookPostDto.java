@@ -1,4 +1,4 @@
-package com.swietlicki.library.controller.dto;
+package com.swietlicki.library.controller.dto.bookDto;
 
 public class BookPostDto {
 

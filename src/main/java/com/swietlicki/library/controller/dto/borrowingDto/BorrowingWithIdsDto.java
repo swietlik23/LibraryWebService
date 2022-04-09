@@ -1,4 +1,4 @@
-package com.swietlicki.library.controller.dto;
+package com.swietlicki.library.controller.dto.borrowingDto;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +28,17 @@ public class BorrowingWithIdsDto {
 
     public long getReaderId() {
         return readerId;
+    }
+
+    @Override
+    public String toString() {
+        return "BorrowingWithIdsDto{" +
+                "id=" + id +
+                ", borrowDate=" + borrowDate +
+                ", returnUntilDate=" + returnUntilDate +
+                ", bookId=" + bookId +
+                ", readerId=" + readerId +
+                '}';
     }
 
     public static final class BorrowingWithReaderDtoBuilder {

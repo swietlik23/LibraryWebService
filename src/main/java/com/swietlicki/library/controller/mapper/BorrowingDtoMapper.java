@@ -1,7 +1,7 @@
 package com.swietlicki.library.controller.mapper;
 
-import com.swietlicki.library.controller.dto.BorrowingDetailsDto;
-import com.swietlicki.library.controller.dto.BorrowingWithIdsDto;
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingDetailsDto;
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingWithIdsDto;
 import com.swietlicki.library.model.Borrowing;
 
 import java.util.List;

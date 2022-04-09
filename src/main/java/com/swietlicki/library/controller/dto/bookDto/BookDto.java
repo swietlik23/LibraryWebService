@@ -1,4 +1,6 @@
-package com.swietlicki.library.controller.dto;
+package com.swietlicki.library.controller.dto.bookDto;
+
+import com.swietlicki.library.controller.dto.borrowingDto.BorrowingDetailsDto;
 
 public class BookDto {
 

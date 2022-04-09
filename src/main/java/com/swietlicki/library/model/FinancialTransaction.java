@@ -11,18 +11,13 @@ import java.time.LocalDateTime;
 @Setter
 public class FinancialTransaction {
 
-    public static final double FEE_PER_DAY = 0.5;
-    public enum FinancialType {
-        FEE, INCOMING_TRANSFER
-    }
+    public static final double FEE_PER_DAY = -0.5;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private FinancialType transferType;
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
     private long readerId;
     private String description;
     private double amount;
-
 }

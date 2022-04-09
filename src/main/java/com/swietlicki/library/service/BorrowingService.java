@@ -1,6 +1,5 @@
 package com.swietlicki.library.service;
 
-import com.swietlicki.library.controller.dto.BorrowingWithIdsDto;
 import com.swietlicki.library.model.Borrowing;
 import com.swietlicki.library.repository.BorrowingRepository;
 import lombok.RequiredArgsConstructor;
