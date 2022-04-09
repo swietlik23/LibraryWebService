@@ -24,6 +24,32 @@ In the future it is planned to add a module that will suggest readers specific i
 The project is based on a collection of books from the Kaggle website. Data contains more than 11,000 items.
 (https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks).
 
+### Presentation
+---
+Here is an actual database schema which is in progress.
+
+![Database schema](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/dbschema.PNG)
+
+_Swagger endpoints_
+
+![SwaggerEndpoints](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/swagger_endpoints.PNG)
+
+_Find book by title (SWAGGER)_
+
+![FindBookByTitle](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/getBookByTitle.PNG)
+
+_Get reader before books returning (SWAGGER)_
+
+![GetSingleReader](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/getSingleReader.PNG)
+
+_Get reader after books returning (SWAGGER)_
+
+![GetSingleReaderAfterReturning](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/getSingleReaderAfterReturns.PNG)
+
+_Get financial transactions after books returning and money transfer (SWAGGER)_
+
+![GetFinancialTransactions](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/getReaderFinancialTransactionsAfterReturning.PNG)
+
 ### Status
 ---
 Project is in progress with some active features and another improvements to make.
