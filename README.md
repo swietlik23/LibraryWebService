@@ -48,4 +48,5 @@ Project is in progress with some active features and another improvements to mak
 
 * Email and sms notification service (notifications of upcoming return date)
 
+--
 
