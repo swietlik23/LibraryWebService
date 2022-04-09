@@ -17,12 +17,10 @@ public class Reader {
     private String firstName;
     private String lastName;
     private String email;
+    private double balance;
 
     @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Borrowing> borrowings;
-
-    @JoinColumn
-    private double balance;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "readerId")

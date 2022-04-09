@@ -8,6 +8,7 @@ import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static com.swietlicki.library.controller.mapper.FinancialTransactionDtoMapper
@@ -21,18 +22,19 @@ public class FinancialTransactionController {
     private final FinancialTransactionService financialTransactionService;
     private final ReaderService readerService;
 
-    @PostMapping("/transaction")
+    @PostMapping("/transactions")
     public void addMoney(@RequestBody FinancialTransactionDto financialTransactionDto) {
         Reader reader = readerService.getSingleReader(financialTransactionDto.getReaderId());
         FinancialTransaction ft = mapFinancialTransactionDtoToFinancialTransaction(financialTransactionDto);
         List<FinancialTransaction> transactions = reader.getFinancialTransactions();
         transactions.add(ft);
         reader.setFinancialTransactions(transactions);
+        reader.setCurrentBalance();
         financialTransactionService.addTransaction(ft);
         readerService.addReader(reader);
     }
 
-    @GetMapping("/transaction/{readerId}")
+    @GetMapping("/reader/{readerId}/transactions/")
     public List<FinancialTransactionDto> getReaderTransactions (@PathVariable long readerId) {
         return mapFinancialTransactionsToDtos(financialTransactionService.getAllByReaderId(readerId));
     }

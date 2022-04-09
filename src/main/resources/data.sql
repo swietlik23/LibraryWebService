@@ -1,6 +1,6 @@
-insert into reader(id, first_name, last_name, email) values (1, 'Kamil', 'Paciorek', 'pac@pac.pl');
-insert into reader(id, first_name, last_name, email) values (2, 'Adam', 'Koala', 'lol@kol.pl');
-insert into reader(id, first_name, last_name, email) values (3, 'Maciek', 'Fasola', 'fas@fas.pl');
+insert into reader(id, first_name, last_name, email) values (1, 'Kamil', 'Kowalski', 'pac@pac.pl');
+insert into reader(id, first_name, last_name, email) values (2, 'Adam', 'Adamski', 'adam@kol.pl');
+insert into reader(id, first_name, last_name, email) values (3, 'Maciek', 'Maciejewski', 'fas@fas.pl');
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (1,'Harry Potter and the Half-Blood Prince (Harry Potter  #6)', 'J.K. Rowling/Mary GrandPré', 'eng', '652', '9/16/2006', 'Scholastic Inc.');
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (2,'Harry Potter and the Order of the Phoenix (Harry Potter  #5)', 'J.K. Rowling/Mary GrandPré', 'eng', '870', '9/1/2004', 'Scholastic Inc.');
 insert into book(id, title, authors, language_code, num_pages, publication_date, publisher) values (4,'Harry Potter and the Chamber of Secrets (Harry Potter  #2)', 'J.K. Rowling', 'eng', '352', '11/1/2003', 'Scholastic');
@@ -11131,3 +11131,4 @@ insert into book(id, title, authors, language_code, num_pages, publication_date,
 insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (1, 1, '2022-01-03T17:01:53.106934', '2022-02-03T17:01:53.106934');
 insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (2, 1, '2022-01-14T17:01:53.106934', '2022-02-14T17:01:53.106934');
 insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (4, 2, '2022-01-23T17:01:53.106934', '2022-02-23T17:01:53.106934');
+insert into borrowing(book_id, reader_id, borrow_date, return_until_date) values (10, 1, '2022-03-23T17:01:53.106934', '2022-04-23T17:01:53.106934');

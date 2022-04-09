@@ -57,9 +57,10 @@ public class BorrowingController {
             FinancialTransaction financialTransaction = new FinancialTransaction();
             financialTransaction.setCreated(currentDate);
             financialTransaction.setReaderId(borrowing.getReaderId());
-            financialTransaction.setDescription(borrowing.toString());
+            financialTransaction.setDescription("Penalty fee: " + borrowing.description());
             financialTransaction.setAmount(numberLateDays * FinancialTransaction.FEE_PER_DAY);
             financialTransactionService.addTransaction(financialTransaction);
+            readerService.updateReaderBalance(borrowing.getReaderId());
         }
         borrowingService.deleteBorrowing(id);
     }

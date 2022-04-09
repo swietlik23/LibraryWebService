@@ -30,10 +30,8 @@ public class BorrowingWithIdsDto {
         return readerId;
     }
 
-    @Override
-    public String toString() {
-        return "BorrowingWithIdsDto{" +
-                "id=" + id +
+    public String description() {
+        return  "id=" + id +
                 ", borrowDate=" + borrowDate +
                 ", returnUntilDate=" + returnUntilDate +
                 ", bookId=" + bookId +
