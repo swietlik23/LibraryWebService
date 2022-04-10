@@ -40,5 +40,15 @@ test {
 	useJUnitPlatform()
 }
 
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'com.swietlicki.library.LibraryApplication'
+		)
+	}
+}
+
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
+
+
