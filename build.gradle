@@ -40,12 +40,20 @@ test {
 	useJUnitPlatform()
 }
 
+//jar {
+//	manifest {
+//		attributes(
+//				'Main-Class': 'com.swietlicki.library.LibraryApplication'
+//		)
+//	}
+//}
+
+bootJar {
+	archiveClassifier.set('boot')
+}
+
 jar {
-	manifest {
-		attributes(
-				'Main-Class': 'com.swietlicki.library.LibraryApplication'
-		)
-	}
+	archiveClassifier.set('')
 }
 
 task stage(dependsOn: ['build', 'clean'])
