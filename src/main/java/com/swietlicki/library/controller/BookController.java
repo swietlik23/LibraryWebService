@@ -3,6 +3,7 @@ package com.swietlicki.library.controller;
 import com.swietlicki.library.controller.dto.bookDto.BookDetailsDto;
 import com.swietlicki.library.controller.dto.bookDto.BookDto;
 import com.swietlicki.library.controller.dto.bookDto.BookPostDto;
+import com.swietlicki.library.controller.exception.bookException.BookNotFoundException;
 import com.swietlicki.library.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class BookController {
 
     @GetMapping("/books/{id}")
     public BookDto getSingleBook(@PathVariable long id) {
-        return mapBookToBookDto(bookService.getSingleBook(id));
+        return mapBookToBookDto(bookService.getSingleBook(id).orElseThrow(()-> new BookNotFoundException(id)));
     }
     @GetMapping("/books/title={title}")
     public List<BookDetailsDto> getAllByTitle(@PathVariable String title,

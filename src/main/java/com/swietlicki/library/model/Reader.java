@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "reader")
 public class Reader {
 
     @Id
@@ -22,7 +23,7 @@ public class Reader {
     @OneToMany(mappedBy = "reader", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Borrowing> borrowings;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "readerId")
     private List<FinancialTransaction> financialTransactions;
 

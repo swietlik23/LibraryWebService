@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,9 +20,8 @@ public class BookService {
         return bookRepository.findAllBooks(PageRequest.of(page,PAGE_SIZE));
     }
 
-    public Book getSingleBook(long id) {
-        return bookRepository.findById(id)
-                .orElseThrow();
+    public Optional<Book> getSingleBook(long id) {
+        return bookRepository.findById(id);
     }
 
     public List<Book> getAllByTitle(String title, int page) {

@@ -1,6 +1,7 @@
 package com.swietlicki.library.controller;
 
 import com.swietlicki.library.controller.dto.financialTransactionDto.FinancialTransactionDto;
+import com.swietlicki.library.controller.exception.readerException.ReaderNotFoundException;
 import com.swietlicki.library.model.FinancialTransaction;
 import com.swietlicki.library.model.Reader;
 import com.swietlicki.library.service.FinancialTransactionService;
@@ -8,7 +9,6 @@ import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 import static com.swietlicki.library.controller.mapper.FinancialTransactionDtoMapper
@@ -24,7 +24,9 @@ public class FinancialTransactionController {
 
     @PostMapping("/transactions")
     public void addMoney(@RequestBody FinancialTransactionDto financialTransactionDto) {
-        Reader reader = readerService.getSingleReader(financialTransactionDto.getReaderId());
+        long readerId = financialTransactionDto.getReaderId();
+        Reader reader = readerService.getSingleReader(readerId).orElseThrow(
+                ()-> new ReaderNotFoundException(readerId));
         FinancialTransaction ft = mapFinancialTransactionDtoToFinancialTransaction(financialTransactionDto);
         List<FinancialTransaction> transactions = reader.getFinancialTransactions();
         transactions.add(ft);

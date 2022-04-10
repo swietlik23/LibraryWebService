@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -13,8 +14,8 @@ public class ReaderService {
 
     private final ReaderRepository readerRepository;
 
-    public Reader getSingleReader(long id) {
-        return readerRepository.findById(id).orElseThrow();
+    public Optional<Reader> getSingleReader(long id) {
+        return readerRepository.findById(id);
     }
 
     public Reader addReader(Reader reader) {

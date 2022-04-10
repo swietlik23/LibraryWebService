@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 @Setter
 public class Borrowing {
 
+    public static final long BORROWING_TIME = 30;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

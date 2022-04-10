@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class BorrowingService {
         borrowingRepository.deleteById(id);
     }
 
-    public Borrowing getBorrowing(long id) {
-        return borrowingRepository.getById(id);
+    public Optional<Borrowing> getBorrowing(long id) {
+        return borrowingRepository.findById(id);
     }
 }

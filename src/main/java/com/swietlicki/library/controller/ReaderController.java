@@ -2,6 +2,7 @@ package com.swietlicki.library.controller;
 
 import com.swietlicki.library.controller.dto.readerDto.ReaderDto;
 import com.swietlicki.library.controller.dto.readerDto.ReaderPostDto;
+import com.swietlicki.library.controller.exception.readerException.ReaderNotFoundException;
 import com.swietlicki.library.service.ReaderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class ReaderController {
 
     @GetMapping("/readers/{id}")
     public ReaderDto getSingleUser(@PathVariable long id) {
-        return mapReaderToReaderDto(readerService.getSingleReader(id));
+        return mapReaderToReaderDto(readerService.getSingleReader(id).orElseThrow(()-> new ReaderNotFoundException(id)));
     }
 
     @PostMapping("/readers")
