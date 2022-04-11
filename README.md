@@ -14,6 +14,8 @@ In the future it is planned to add a module that will suggest readers specific i
 
 * [Presentation](#presentation)
 
+* [Heroku](#heroku)
+
 * [Status](#status)
 
 ### Build with
@@ -26,13 +28,13 @@ In the future it is planned to add a module that will suggest readers specific i
 
 * JPA
 
-* H2 Database
+* PostgreSQL
 
 * Swagger
 
 ### Data source
 ---
-The project is based on a collection of books from the Kaggle website. Data contains more than 11,000 items.
+The project is based on a collection of books from the Kaggle website. Data contains more than 9,000 items.
 (https://www.kaggle.com/datasets/jealousleopard/goodreadsbooks).
 
 ### Presentation
@@ -61,6 +63,10 @@ _Get financial transactions after books returning and money transfer (SWAGGER)_
 
 ![GetFinancialTransactions](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/getReaderFinancialTransactionsAfterReturning.PNG)
 
+### Heroku
+---
+You can test the aplication on Heroku: https://libraryservice.herokuapp.com/swagger-ui.html#/
+
 ### Status
 ---
 Project is in progress with some active features and another improvements to make.
@@ -75,6 +81,8 @@ Project is in progress with some active features and another improvements to mak
 
 ##### _To do_
 
+* Updating of response statuses
+
 * Implementation of administrator and user accounts
 
 * Adding a book categories table (not included in the accompanying data from Kaggle)
@@ -86,4 +94,3 @@ Project is in progress with some active features and another improvements to mak
 * Email and sms notification service (notifications of upcoming return date)
 
 ---
-
