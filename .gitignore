@@ -9,6 +9,8 @@ reader.sql
 data.sql
 schema.sql
 borrowings.sql
+dataToPostgres.sql
+aplication.properties
 
 ### STS ###
 .apt_generated

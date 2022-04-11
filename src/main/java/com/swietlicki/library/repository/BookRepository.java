@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    @Query("SELECT b FROM Book b")
+    @Query("SELECT b FROM Book b LEFT JOIN FETCH b.borrowing ORDER BY b.id")
     List<Book> findAllBooks(Pageable page);
 
-    @Query("SELECT b FROM Book b WHERE LOWER(title) LIKE %:title%")
+    @Query("SELECT b FROM Book b WHERE LOWER(title) LIKE %:title% ")
     List<Book> findAllByTitle(@Param("title") String title, Pageable page);
     
 }

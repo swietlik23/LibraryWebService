@@ -13,6 +13,8 @@ import com.swietlicki.library.service.BookService;
 import com.swietlicki.library.service.BorrowingService;
 import com.swietlicki.library.service.FinancialTransactionService;
 import com.swietlicki.library.service.ReaderService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,17 +35,18 @@ public class BorrowingController {
     private final ReaderService readerService;
     private final FinancialTransactionService financialTransactionService;
 
+    @ApiOperation(value = "Find all borrowings")
     @GetMapping("/borrowings")
     public List<BorrowingWithIdsDto> getAllBorrowings(@RequestParam(required = false) Integer page) {
         int pageNumber = page != null && page >= 0 ? page : 0;
         return mapBorrowingsToBorrowingsDto(borrowingService.getBorrowings(pageNumber));
     }
 
+    @ApiOperation(value = "Add new borrowing")
     @PostMapping("/borrowings")
     public BorrowingWithIdsDto addBorrowing(@RequestBody BorrowingPostDto borrowingPostDto) {
         long readerId = borrowingPostDto.getReaderId();
         Reader reader = readerService.getSingleReader(readerId).orElseThrow(()-> new ReaderNotFoundException(readerId));
-
         long bookId = borrowingPostDto.getBookId();
         Book book = bookService.getSingleBook(bookId).orElseThrow(()-> new BookNotFoundException(bookId));
         if(mapBookToBookDto(book).getBorrowing() == null) {
@@ -56,8 +59,10 @@ public class BorrowingController {
         return new BorrowingWithIdsDto();
     }
 
+    @ApiOperation(value = "Delete borrowing")
     @DeleteMapping("/borrowings/{id}")
-    public void deleteBorrowing(@PathVariable long id) {
+    public void deleteBorrowing(@ApiParam(value = "Type unique id of borrowing", example = "1")
+                                    @PathVariable long id) {
         BorrowingWithIdsDto borrowing = mapBorrowingToBorrowingWithIdsDto(borrowingService.getBorrowing(id)
                 .orElseThrow(()-> new BorrowingNotFoundException(id)));
         LocalDateTime currentDate = LocalDateTime.now();
