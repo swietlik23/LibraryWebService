@@ -15,7 +15,7 @@ The application is embedded in Heroku, so you can run it quickly and easily.
 
 * [Presentation](#presentation)
 
-* [Accessing secured endpoints](accessing-secured-endpoints)
+* [Accessing secured endpoints](#accessing-secured-endpoints)
 
 * [Heroku](#heroku)
 
@@ -75,21 +75,21 @@ The token validity time is set to __10 minutes__.
 
 _Step #1_
 
-![Log in #1](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login1.PNG)
+![Log in #1](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login1.png)
 
 _Step #2_
 
-![Log in #2](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login2.PNG)
+![Log in #2](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login2.png)
 
 _Step #3_
 
-![Log in #3](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login3.PNG)
+![Log in #3](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login3.png)
 
 _Step #4_
 
-![Log in #4](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login4.PNG)
+![Log in #4](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login4.png)
 
-
+---
 ### Heroku
 ---
 You can test the application on Heroku: https://libraryservice.herokuapp.com/swagger-ui.html#/
