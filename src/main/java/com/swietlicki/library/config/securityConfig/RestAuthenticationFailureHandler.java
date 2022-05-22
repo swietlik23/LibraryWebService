@@ -1,4 +1,4 @@
-package com.swietlicki.library.config;
+package com.swietlicki.library.config.securityConfig;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;

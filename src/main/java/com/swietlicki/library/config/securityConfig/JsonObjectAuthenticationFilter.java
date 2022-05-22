@@ -1,4 +1,4 @@
-package com.swietlicki.library.config;
+package com.swietlicki.library.config.securityConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
