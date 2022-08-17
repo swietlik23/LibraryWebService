@@ -22,7 +22,7 @@ public class ReaderController {
     @GetMapping("/readers/{id}")
     public ReaderDto getSingleUser(@ApiParam(value = "Type unique id of reader", example = "1")
                                        @PathVariable long id) {
-        return mapReaderToReaderDto(readerService.getSingleReader(id).orElseThrow(()-> new ReaderNotFoundException(id)));
+        return mapReaderToReaderDto(readerService.getSingleReader(id));
     }
 
     @ApiOperation(value = "Add new reader")

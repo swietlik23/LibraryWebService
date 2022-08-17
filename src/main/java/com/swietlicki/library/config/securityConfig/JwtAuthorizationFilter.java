@@ -21,7 +21,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     private final UserDetailsService userDetailsService;
     private final String secret;
 
-    public JwtAuthorizationFilter(AuthenticationManager authenticationManager,
+    public  JwtAuthorizationFilter(AuthenticationManager authenticationManager,
                                   UserDetailsService userDetailsService,
                                   String secret) {
         super(authenticationManager);

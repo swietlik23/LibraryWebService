@@ -1,5 +1,7 @@
 package com.swietlicki.library.service;
 
+import com.swietlicki.library.controller.exception.bookException.BookNotFoundException;
+import com.swietlicki.library.controller.exception.readerException.ReaderNotFoundException;
 import com.swietlicki.library.model.Book;
 import com.swietlicki.library.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +22,8 @@ public class BookService {
         return bookRepository.findAllBooks(PageRequest.of(page,PAGE_SIZE));
     }
 
-    public Optional<Book> getSingleBook(long id) {
-        return bookRepository.findById(id);
+    public Book getSingleBook(long id) {
+        return bookRepository.findById(id).orElseThrow(()-> new BookNotFoundException(id));
     }
 
     public List<Book> getAllByTitle(String title, int page) {
@@ -34,5 +36,12 @@ public class BookService {
 
     public Book editBook(Book book) {
         return bookRepository.save(book);
+    }
+
+    public void deleteBook(long id) {
+        if(!bookRepository.existsById(id)) {
+            throw new BookNotFoundException(id);
+        }
+        bookRepository.deleteById(id);
     }
 }

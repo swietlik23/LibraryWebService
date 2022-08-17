@@ -28,8 +28,7 @@ public class FinancialTransactionController {
     @PostMapping("/transactions")
     public void addMoney(@RequestBody FinancialTransactionDto financialTransactionDto) {
         long readerId = financialTransactionDto.getReaderId();
-        Reader reader = readerService.getSingleReader(readerId).orElseThrow(
-                ()-> new ReaderNotFoundException(readerId));
+        Reader reader = readerService.getSingleReader(readerId);
         FinancialTransaction ft = mapFinancialTransactionDtoToFinancialTransaction(financialTransactionDto);
         List<FinancialTransaction> transactions = reader.getFinancialTransactions();
         transactions.add(ft);

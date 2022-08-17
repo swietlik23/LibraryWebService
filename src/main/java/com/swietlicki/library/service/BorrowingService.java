@@ -1,5 +1,6 @@
 package com.swietlicki.library.service;
 
+import com.swietlicki.library.controller.exception.borrowingException.BorrowingNotFoundException;
 import com.swietlicki.library.model.Borrowing;
 import com.swietlicki.library.repository.BorrowingRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class BorrowingService {
         borrowingRepository.deleteById(id);
     }
 
-    public Optional<Borrowing> getBorrowing(long id) {
-        return borrowingRepository.findById(id);
+    public Borrowing getBorrowing(long id) {
+        return borrowingRepository.findById(id).orElseThrow(()-> new BorrowingNotFoundException(id));
     }
 }

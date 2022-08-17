@@ -1,8 +1,10 @@
 package com.swietlicki.library.controller;
 
+import com.swietlicki.library.controller.dto.bookDto.BookDto;
 import com.swietlicki.library.controller.dto.borrowingDto.BorrowingPostDto;
 import com.swietlicki.library.controller.dto.borrowingDto.BorrowingWithIdsDto;
 import com.swietlicki.library.controller.exception.bookException.BookNotFoundException;
+import com.swietlicki.library.controller.exception.borrowingException.BookIsBorrowedException;
 import com.swietlicki.library.controller.exception.borrowingException.BorrowingNotFoundException;
 import com.swietlicki.library.controller.exception.readerException.ReaderNotFoundException;
 import com.swietlicki.library.model.Book;
@@ -22,7 +24,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.swietlicki.library.controller.mapper.BookDtoMapper.mapBookToBookDto;
-import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.*;
+import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.mapBorrowingToBorrowingWithIdsDto;
+import static com.swietlicki.library.controller.mapper.BorrowingDtoMapper.mapBorrowingsToBorrowingsDto;
 import static com.swietlicki.library.model.Borrowing.BORROWING_TIME;
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -46,25 +49,26 @@ public class BorrowingController {
     @PostMapping("/borrowings")
     public BorrowingWithIdsDto addBorrowing(@RequestBody BorrowingPostDto borrowingPostDto) {
         long readerId = borrowingPostDto.getReaderId();
-        Reader reader = readerService.getSingleReader(readerId).orElseThrow(()-> new ReaderNotFoundException(readerId));
+        Reader reader = readerService.getSingleReader(readerId);
         long bookId = borrowingPostDto.getBookId();
-        Book book = bookService.getSingleBook(bookId).orElseThrow(()-> new BookNotFoundException(bookId));
-        if(mapBookToBookDto(book).getBorrowing() == null) {
+        Book book = bookService.getSingleBook(bookId);
+        BookDto bookDto = mapBookToBookDto(book);
+        if(bookDto.getBorrowing() == null) {
             Borrowing borrowing = new Borrowing();
             borrowing.setBook(book);
             borrowing.setReader(reader);
             borrowing.setReturnUntilDate(LocalDateTime.now().plusDays(BORROWING_TIME));
             return mapBorrowingToBorrowingWithIdsDto(borrowingService.addBorrowing(borrowing));
+        } else {
+            throw new BookIsBorrowedException(bookDto.getId(), bookDto.getBorrowing().getId());
         }
-        return new BorrowingWithIdsDto();
     }
 
     @ApiOperation(value = "Delete borrowing")
     @DeleteMapping("/borrowings/{id}")
     public void deleteBorrowing(@ApiParam(value = "Type unique id of borrowing", example = "1")
                                     @PathVariable long id) {
-        BorrowingWithIdsDto borrowing = mapBorrowingToBorrowingWithIdsDto(borrowingService.getBorrowing(id)
-                .orElseThrow(()-> new BorrowingNotFoundException(id)));
+        BorrowingWithIdsDto borrowing = mapBorrowingToBorrowingWithIdsDto(borrowingService.getBorrowing(id));
         LocalDateTime currentDate = LocalDateTime.now();
         long numberLateDays = DAYS.between(borrowing.getReturnUntilDate(), currentDate);
         if(numberLateDays > 0) {

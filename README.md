@@ -15,7 +15,7 @@ The application is embedded in Heroku, so you can run it quickly and easily.
 
 * [Presentation](#presentation)
 
-* [Accessing secured endpoints](accessing-secured-endpoints)
+* [Accessing secured endpoints](#accessing-secured-endpoints)
 
 * [Heroku](#heroku)
 
@@ -36,6 +36,8 @@ The application is embedded in Heroku, so you can run it quickly and easily.
 * PostgreSQL
 
 * Swagger
+
+* JUnit5
 
 ### Data source
 ---
@@ -70,26 +72,28 @@ _Get financial transactions after books returning and money transfer (SWAGGER)_
 
 ### Accessing secured endpoints
 ---
+This section is based on articles posted on the nullpointerexception.pl blog (this contains some of the code provided by the blog's author).
+
 In order to access secure endpoints, you need to go through the authentication process according to the following instructions.
-The token validity time is set to __10 minutes__.
+The token validity time is set to __15 minutes__.
 
 _Step #1_
 
-![Log in #1](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login1.PNG)
+![Log in #1](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login1.png)
 
 _Step #2_
 
-![Log in #2](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login2.PNG)
+![Log in #2](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login2.png)
 
 _Step #3_
 
-![Log in #3](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login3.PNG)
+![Log in #3](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login3.png)
 
 _Step #4_
 
-![Log in #4](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login4.PNG)
+![Log in #4](https://github.com/swietlik23/LibraryWebService/blob/main/picturesToReadeMe/login4.png)
 
-
+---
 ### Heroku
 ---
 You can test the application on Heroku: https://libraryservice.herokuapp.com/swagger-ui.html#/
@@ -110,8 +114,6 @@ The project is in progress with some active features and another improvements to
 
 ##### _To do_
 
-* Updating of response statuses
-
 * Implementation of administrator and user accounts
 
 * Adding a book categories table (not included in the accompanying data from Kaggle)
@@ -121,6 +123,8 @@ The project is in progress with some active features and another improvements to
 * Creating a table with suggested books to borrow
 
 * Email and sms notification service (notifications of upcoming return date)
+
+* Create unit tests for the rest of the classes
 
 * Integration Testing
 

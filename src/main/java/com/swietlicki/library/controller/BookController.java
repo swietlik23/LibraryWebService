@@ -32,7 +32,7 @@ public class BookController {
     @ApiOperation(value = "Find book by id")
     @GetMapping("/books/{id}")
     public BookDto getSingleBook(@ApiParam(value = "Type unique id of book", example = "10") @PathVariable long id) {
-        return mapBookToBookDto(bookService.getSingleBook(id).orElseThrow(()-> new BookNotFoundException(id)));
+        return mapBookToBookDto(bookService.getSingleBook(id));
     }
 
     @ApiOperation(value = "Find book by title")
@@ -56,6 +56,13 @@ public class BookController {
     public BookPostDto editBook(@ApiParam(value = "unique id of book", example = "10")
                                     @PathVariable Long id, @RequestBody BookPostDto bookPostDto) {
         return mapBookToBookPostDto(bookService.editBook(mapBookPostDtoToBook(id, bookPostDto)));
+    }
+
+    @ApiOperation(value = "Delete book")
+    @DeleteMapping("/books/{id}")
+    public void deleteBook(@ApiParam(value = "Type unique id of book", example = "1")
+                             @PathVariable long id) {
+        bookService.deleteBook(id);
     }
 
 }
